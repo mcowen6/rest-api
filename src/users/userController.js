@@ -2,7 +2,7 @@ const Users2 = require("./userModel");
 const jwt = require("jsonwebtoken");
 
 exports.createUser = async (req, res) => {
-  console.log(req);
+  //   console.log(req);
   try {
     const newUser = await Users2.create(req.body);
     console.log(newUser);
