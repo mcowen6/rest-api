@@ -22,3 +22,30 @@ exports.readUsers = async (req, res) => {
     res.status(500).send({ error: error.message });
   }
 };
+
+exports.updateUser = async (req, res) => {
+  try {
+    const updateUser = await Users2.updateOne(
+      {
+        username: req.body.username,
+      },
+      { [req.body.key]: req.body.value }
+    );
+    console.log(updateUser);
+    res.status(200).send({ update: "User has been updated" });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({ error: error.message });
+  }
+};
+
+exports.deleteUser = async (req, res) => {
+  try {
+    const deleteUser = await Users2.deleteOne({ username: req.body.username });
+    console.log(deleteUser);
+    res.status(200).send({ delete: "User has been deleted" });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({ error: error.message });
+  }
+};
