@@ -59,3 +59,26 @@ exports.tokenCheck = async (req, res, next) => {
     res.status(500).send({ error: error.message });
   }
 };
+
+exports.validate = async (req, res, next) => {
+  try {
+    const username = req.body.username;
+    const email = req.body.email;
+    const password = req.body.password;
+
+    if (username.length < 3) {
+      throw new Error(
+        "username does not meet the minimum length requirement of 3"
+      );
+    } else if (!email.includes("@") || !email.includes(".com")) {
+      throw new Error("invalid email address");
+    } else if (password.length < 6) {
+      throw new Error("Password does not meet requirements");
+    } else {
+      next();
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({ error: error.message });
+  }
+};
