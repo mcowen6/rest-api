@@ -6,12 +6,12 @@ const {
   deleteUser,
   loginUser,
 } = require("./userController");
-const { hashPass } = require("../middleware");
+const { hashPass, comparePass, tokenCheck } = require("../middleware");
 const userRouter = Router();
 
 userRouter.post("/createUser", hashPass, createUser);
-userRouter.post("/login", loginUser);
-userRouter.get("/readUsers", readUsers);
+userRouter.post("/login", comparePass, loginUser);
+userRouter.get("/readUsers", tokenCheck, readUsers);
 userRouter.put("/updateUser", updateUser);
 userRouter.delete("/deleteUser", deleteUser);
 

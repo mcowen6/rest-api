@@ -51,11 +51,13 @@ exports.deleteUser = async (req, res) => {
 };
 
 exports.loginUser = async (req, res) => {
+  console.log("middleware passed and controller has been called");
   try {
     const user = await Users2.findOne({ username: req.body.username });
     const token = await jwt.sign({ _id: user._id }, process.env.SECRET);
     console.log(user, "found in database");
     console.log("token:", token);
+    res.status(200).send({ username: user.username, token });
   } catch (error) {
     console.log(error);
     res.status(500).send({ error: error.message });
