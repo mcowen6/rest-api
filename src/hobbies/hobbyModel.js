@@ -1,10 +1,13 @@
 const mongoose = require("mongoose");
+const { Users2 } = require("../users/userModel");
+const { Types } = require("mongoose");
 
 const hobbySchema = new mongoose.Schema({
   hobby: {
-    name: String,
+    type: String,
     required: true,
   },
+  users: [{ type: Types.ObjectId, ref: "Users2" }],
   // possible boolean for is team sport
 });
 

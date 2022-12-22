@@ -1,5 +1,6 @@
 const Users2 = require("./userModel");
 const jwt = require("jsonwebtoken");
+const Hobbies = require("../hobbies/hobbyModel");
 
 exports.createUser = async (req, res) => {
   //   console.log(req);
@@ -15,7 +16,7 @@ exports.createUser = async (req, res) => {
 
 exports.readUsers = async (req, res) => {
   try {
-    const users = await Users2.find({});
+    const users = await Users2.find({}).populate({ path: "hobbies" });
     res.status(200).send({ users: users });
   } catch (error) {
     console.log(error);

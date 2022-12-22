@@ -1,4 +1,6 @@
 const mongoose = require("mongoose");
+const { Types } = require("mongoose");
+const { Hobbies } = require("../hobbies/hobbyModel");
 
 const userSchema = new mongoose.Schema({
   username: {
@@ -15,6 +17,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  hobbies: [{ type: Types.ObjectId, ref: "Hobbies" }],
 });
 
 const Users2 = mongoose.model("Users2", userSchema);
