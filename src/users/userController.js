@@ -16,7 +16,7 @@ exports.createUser = async (req, res) => {
 
 exports.readUsers = async (req, res) => {
   try {
-    const users = await Users2.find({}).populate({ path: "hobbies" });
+    const users = await Users2.find({}).populate("hobbies", "hobby");
     res.status(200).send({ users: users });
   } catch (error) {
     console.log(error);
@@ -54,6 +54,11 @@ exports.deleteUser = async (req, res) => {
 exports.loginUser = async (req, res) => {
   console.log("middleware passed and controller has been called");
   try {
+    if (req.authUser) {
+      console.log("token check passed and continue to persistent login");
+      res.status(200).send({ username: req.authUser.username });
+      return;
+    }
     const user = await Users2.findOne({ username: req.body.username });
     const token = await jwt.sign({ _id: user._id }, process.env.SECRET);
     console.log(user, "found in database");

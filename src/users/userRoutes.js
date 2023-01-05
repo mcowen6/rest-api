@@ -17,8 +17,9 @@ const userRouter = Router();
 
 userRouter.post("/createUser", validate, hashPass, createUser);
 userRouter.post("/login", comparePass, loginUser);
-userRouter.get("/readUsers", tokenCheck, readUsers);
-userRouter.put("/updateUser", tokenCheck, updateUser);
-userRouter.delete("/deleteUser", tokenCheck, deleteUser);
+userRouter.get("/readUsers", /*tokenCheck,*/ readUsers);
+userRouter.get("/authCheck", tokenCheck, loginUser);
+userRouter.put("/updateUser", /*tokenCheck, hashPass,*/ updateUser);
+userRouter.delete("/deleteUser", /* tokenCheck,*/ deleteUser);
 
 module.exports = userRouter;

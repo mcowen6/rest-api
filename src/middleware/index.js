@@ -50,6 +50,7 @@ exports.tokenCheck = async (req, res, next) => {
     const user = await Users2.findById(decodedToken._id);
     console.log("user found by id:", user);
     if (user) {
+      req.authUser = user;
       next();
     } else {
       throw new Error("User not authorized");

@@ -3,8 +3,11 @@ require("./db/connection");
 const express = require("express");
 const hobbyRouter = require("./hobbies/hobbyRoutes");
 const userRouter = require("./users/userRoutes");
+const cors = require("cors");
 
 const app = express();
+
+app.use(cors());
 
 const port = process.env.PORT || 5001;
 
