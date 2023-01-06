@@ -16,7 +16,7 @@ exports.createUser = async (req, res) => {
 
 exports.readUsers = async (req, res) => {
   try {
-    const users = await Users2.find({}).populate("hobbies", "hobby");
+    const users = await Users2.find({}); /*.populate("hobbies", "hobby")*/
     res.status(200).send({ users: users });
   } catch (error) {
     console.log(error);

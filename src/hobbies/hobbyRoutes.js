@@ -1,22 +1,22 @@
-const { Router } = require("express");
+// const { Router } = require("express");
 
-const {
-  createHobby,
-  readHobbies,
-  updateHobby,
-  deleteHobby,
-} = require("./hobbyController");
-const { tokenCheck } = require("../middleware");
+// const {
+//   createHobby,
+//   readHobbies,
+//   updateHobby,
+//   deleteHobby,
+// } = require("./hobbyController");
+// const { tokenCheck } = require("../middleware");
 
-const hobbyRouter = Router();
+// const hobbyRouter = Router();
 
-//*create
-hobbyRouter.post("/createHobby", createHobby);
-//*read
-hobbyRouter.get("/readHobbies", tokenCheck, readHobbies);
-//*update
-hobbyRouter.put("/updateHobby", tokenCheck, updateHobby);
-//*delete
-hobbyRouter.delete("/deleteHobby", tokenCheck, deleteHobby);
+// //*create
+// hobbyRouter.post("/createHobby", createHobby);
+// //*read
+// hobbyRouter.get("/readHobbies", tokenCheck, readHobbies);
+// //*update
+// hobbyRouter.put("/updateHobby", tokenCheck, updateHobby);
+// //*delete
+// hobbyRouter.delete("/deleteHobby", tokenCheck, deleteHobby);
 
-module.exports = hobbyRouter;
+// module.exports = hobbyRouter;
