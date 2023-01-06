@@ -15,7 +15,7 @@ const {
 
 const userRouter = Router();
 
-userRouter.post("/createUser", validate, hashPass, createUser);
+userRouter.post("/createUser", /*validate,*/ hashPass, createUser);
 userRouter.post("/login", comparePass, loginUser);
 userRouter.get("/readUsers", /*tokenCheck,*/ readUsers);
 userRouter.get("/authCheck", tokenCheck, loginUser);
